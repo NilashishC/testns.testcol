@@ -6,6 +6,14 @@ on:   # yamllint disable-line rule:truthy
     types: [published]
 
 jobs:
+  verify:
+    runs-on: ubuntu-latest
+    name: Automation Hub release
+    environment: "${{ inputs.environment }}"
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          cat README.md
   release_automation_hub:
     uses: ansible/ansible-content-actions/.github/workflows/release_ah.yaml@main
     with:
