@@ -15,7 +15,7 @@ jobs:
       - run: |
           cat README.md
   release_automation_hub:
-    uses: NilashishC/ansible-content-actions/.github/workflows/release_ah.yaml@update_release_ah
+    uses: KB-perByte/ansible-content-actions/.github/workflows/release_ah.yaml@fix_ah
     with:
       environment: ah
     secrets:
