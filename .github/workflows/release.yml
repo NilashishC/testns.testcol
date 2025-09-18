@@ -1,21 +1,14 @@
 ---
-name: Release testns.testcol
+name: Release hashicorp.terraform
 
-on: # yamllint disable-line rule:truthy
+on:   # yamllint disable-line rule:truthy
   release:
     types: [published]
 
 jobs:
   release_automation_hub:
-    runs-on: ubuntu-latest
-    name: Automation Hub release
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: "${{ github.event.release.tag_name }}"
-      - name: CAT README
-        run: |
-          cat README.md
-      - name: Build the collection
-        run: |
-          ansible-galaxy collection build -v --force
+    uses: ansible/ansible-content-actions/.github/workflows/release_ah.yaml@main
+    with:
+      environment: ah
+    secrets:
+      ah_token: abcd
