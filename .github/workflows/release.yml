@@ -13,3 +13,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: "${{ github.event.release.tag_name }}"
+      - name: CAT README
+        run: |
+          cat README.md
+      - name: Build the collection
+        run: |
+          ansible-galaxy collection build -v --force
